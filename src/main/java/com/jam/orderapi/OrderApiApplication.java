@@ -6,9 +6,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.jam.orderapi.entity.CartItems;
 import com.jam.orderapi.entity.Customer;
 import com.jam.orderapi.entity.Product;
 import com.jam.orderapi.entity.Transaction;
+import com.jam.orderapi.entity.repository.CartItemsRepository;
 import com.jam.orderapi.entity.repository.CustomerRepository;
 import com.jam.orderapi.entity.repository.ProductRepository;
 import com.jam.orderapi.entity.repository.TransactionRepository;
@@ -27,7 +29,7 @@ public class OrderApiApplication implements CommandLineRunner{
 	TransactionRepository transactionRepository;
 	
 	@Autowired
-	TransactionServiceImpl transactionServiceImpl;
+	CartItemsRepository cartItemsRepository;
 	
 	private final Logger LOGGER = Logger.getLogger(OrderApiApplication.class.getName());
 
@@ -36,21 +38,42 @@ public class OrderApiApplication implements CommandLineRunner{
 	}
 	
 	/**
+	 * TODO remove this before production
+	 * 
 	 * This is to insert these dummy data
 	 */
 	@Override
 	public void run(String... args) throws Exception {
-		productRepository.save(new Product("T-Shirt", "this is a tshirt", 25.9));
-		productRepository.save(new Product("Jean", "this is a jeans", 423.9));
-		productRepository.save(new Product("Hat", "this is a hat", 5.0));
+		// Adding dummy products, keep the object reference for later usage
+		Product prod = new Product(1, "T-Shirt", "this is a tshirt", 25.9); 
+		Product prod2 = new Product(2, "Jean", "this is a jeans", 423.9); 
+		Product prod3 = new Product(3, "Hat", "this is a hat", 5.0);
+		productRepository.save(prod);
+		productRepository.save(prod2);
+		productRepository.save(prod3);
 		
-		customerRepository.save( new Customer("Juan", 2.4) );
-		customerRepository.save(new Customer("Pedro", 233.4));
-		customerRepository.save(new Customer("Jose", 234.44));
-		
+		// Adding dummy customer, keep the object reference for later usage
+		// this is like a customer sign-up
+		//int custid, String name, Double funds
 		Customer cust = new Customer(4, "Juan", 23.4); // I want to use this object later to add trans
-		transactionRepository.save(new Transaction(cust, 45.8, 0));
-		transactionRepository.save(new Transaction(cust, 35.8, 7));
+		Customer cust2 = new Customer(5, "Pedro", 23.4);
+		Customer cust3 = new Customer(6, "Jose", 23.4);
+		customerRepository.save(cust);
+		customerRepository.save(cust2);
+		customerRepository.save(cust3);
+		
+		// Add 2 new transactions for the same customer, keep the object reference to used for adding the selected items
+		//(int transid, Customer customer, Double totalprice, int status)
+		Transaction trans = new Transaction(7, cust, 45.8, 0);
+		Transaction trans2 = new Transaction(8, cust, 45.8, 0);
+		transactionRepository.save(trans);
+		transactionRepository.save(trans2);
+		
+		//adding 2 items to cart, -> for the same transaction, with different products and qty
+		//(Transaction transaction, Product product, int quantity)
+		cartItemsRepository.save(new CartItems(trans, prod, 5));
+		cartItemsRepository.save(new CartItems(trans, prod2, 89));
+
 		
 	}
 

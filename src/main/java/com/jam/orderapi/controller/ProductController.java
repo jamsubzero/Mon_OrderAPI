@@ -25,7 +25,7 @@ public class ProductController {
 	@Autowired
 	ProductServiceImpl productServiceImpl;
 	/**
-	 * REST ENDPOINT that returns the products encoded in the database
+	 * REST endpoint that returns the products encoded in the database
 	 * The products returned are fixed values persisted when the app starts
 	 * 
 	 * @return list of products

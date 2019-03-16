@@ -27,7 +27,7 @@ public class TransactionController {
 	TransactionServiceImpl transactionServiceImpl;
 		
 	/**
-	 * FOR TESTING/DEBUGGING ONLY
+	 * FOR TESTING/DEBUGGING
 	 * 
 	 * @return list of transactions for juan dela cruz
 	 */
@@ -37,14 +37,16 @@ public class TransactionController {
 		return transactionServiceImpl.findTransactionsByCustomer(cust);
 	}
 	
+	
+	
 	/**
-	 * REST ENDPOINT used in case the client has the ID of the customer
+	 * REST endpoint used in case the client has the transaction Id
 	 * 
-	 * @param custId
+	 * @param transId
 	 * @return list of transactions made by the requested customer
 	 */
 	@GetMapping("/gettrans/{transid}")
-	public Optional<Transaction> getTrans(@PathVariable int transid){
+	public Optional<Transaction> getTransById(@PathVariable int transid){
 		return transactionServiceImpl.findTransactionById(transid);
 	}
 	

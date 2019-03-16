@@ -24,7 +24,7 @@ public class CustomerController {
 	CustomerServiceImpl customerServiceImpl;
 	
 	/**
-	 * * REST ENDPOINT in case we need to check the customer details (i.e. name & funds)
+	 * * REST endpoint in case we need to check the customer details (i.e. name & funds)
 	 * 
 	 * @param id - the customer id in the path variable
 	 * @return customer object
