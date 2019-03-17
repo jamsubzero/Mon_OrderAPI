@@ -6,15 +6,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.jam.orderapi.entity.CartItems;
 import com.jam.orderapi.entity.Customer;
 import com.jam.orderapi.entity.Product;
 import com.jam.orderapi.entity.Transaction;
-import com.jam.orderapi.entity.repository.CartItemsRepository;
 import com.jam.orderapi.entity.repository.CustomerRepository;
 import com.jam.orderapi.entity.repository.ProductRepository;
 import com.jam.orderapi.entity.repository.TransactionRepository;
-import com.jam.orderapi.entity.service.TransactionServiceImpl;;
 
 @SpringBootApplication
 public class OrderApiApplication implements CommandLineRunner{
@@ -27,9 +24,6 @@ public class OrderApiApplication implements CommandLineRunner{
 	
 	@Autowired
 	TransactionRepository transactionRepository;
-	
-	@Autowired
-	CartItemsRepository cartItemsRepository;
 	
 	private final Logger LOGGER = Logger.getLogger(OrderApiApplication.class.getName());
 
@@ -71,8 +65,8 @@ public class OrderApiApplication implements CommandLineRunner{
 		
 		//adding 2 items to cart, -> for the same transaction, with different products and qty
 		//(Transaction transaction, Product product, int quantity)
-		cartItemsRepository.save(new CartItems(trans, prod, 5));
-		cartItemsRepository.save(new CartItems(trans, prod2, 89));
+//		cartItemsRepository.save(new CartItems(trans, prod, 5));
+//		cartItemsRepository.save(new CartItems(trans, prod2, 89));
 
 		
 	}
