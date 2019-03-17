@@ -12,5 +12,6 @@ import com.jam.orderapi.entity.Transaction;
 public interface TransactionRepository extends JpaRepository<Transaction, Integer>{
 
 	List<Transaction> findTransactionsByCustomer(Customer customer); //in case the customer object is available
-	
+	 
+	 
 }

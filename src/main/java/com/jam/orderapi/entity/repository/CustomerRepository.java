@@ -8,6 +8,4 @@ import com.jam.orderapi.entity.Customer;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer>{
 
-	
-
 }

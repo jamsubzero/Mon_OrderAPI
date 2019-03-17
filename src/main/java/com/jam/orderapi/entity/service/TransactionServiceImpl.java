@@ -25,6 +25,11 @@ public class TransactionServiceImpl implements TransactionService{
 	public Optional<Transaction> findTransactionById(int transid) {
 		return transactionRepository.findById(transid);
 	}
+
+	@Override
+	public Transaction createNewTransaction(Transaction transaction) {
+		return transactionRepository.save(transaction);
+	}
 	
 	
 

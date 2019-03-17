@@ -16,6 +16,8 @@ import com.jam.orderapi.entity.repository.TransactionRepository;
 @SpringBootApplication
 public class OrderApiApplication implements CommandLineRunner{
 	
+	private static final Logger MYLOGGER = Logger.getLogger(OrderApiApplication.class.getName());
+	
 	@Autowired
 	ProductRepository productRepository; 
 	
@@ -25,7 +27,6 @@ public class OrderApiApplication implements CommandLineRunner{
 	@Autowired
 	TransactionRepository transactionRepository;
 	
-	private final Logger LOGGER = Logger.getLogger(OrderApiApplication.class.getName());
 
 	public static void main(String[] args) {
 		SpringApplication.run(OrderApiApplication.class, args);

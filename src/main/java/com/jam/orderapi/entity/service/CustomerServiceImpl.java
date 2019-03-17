@@ -22,4 +22,11 @@ public class CustomerServiceImpl implements CustomerService {
 	public Optional<Customer> getCustomerById(int custid) {
 		return customerRepository.findById(custid);
 	}
+
+
+	@Override
+	public Customer addOrUpdateCustomer(Customer customer) {
+		return customerRepository.save(customer);
+	}
+
 }
