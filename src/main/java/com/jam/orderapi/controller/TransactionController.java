@@ -25,17 +25,8 @@ public class TransactionController {
 	
 	@Autowired
 	TransactionServiceImpl transactionServiceImpl;
-		
-	/**
-	 * FOR TESTING/DEBUGGING
-	 * 
-	 * @return list of transactions for juan dela cruz
-	 */
-	@GetMapping("/gettrans")
-	public List<Transaction> getTrans(){
-		Customer cust = new Customer(4, "Juan Dela Cruz", 56.9);
-		return transactionServiceImpl.findTransactionsByCustomer(cust);
-	}
+	
+	
 	
 	
 	
@@ -49,5 +40,19 @@ public class TransactionController {
 	public Optional<Transaction> getTransById(@PathVariable int transid){
 		return transactionServiceImpl.findTransactionById(transid);
 	}
+	
+	
+	
+	/**
+	 * FOR TESTING/DEBUGGING
+	 * 
+	 * @return list of transactions for juan dela cruz
+	 */
+	@GetMapping("/gettrans")
+	public List<Transaction> getTrans(){
+		Customer cust = new Customer(4, "Juan Dela Cruz", 56.9);
+		return transactionServiceImpl.findTransactionsByCustomer(cust);
+	}
+	
 	
 }
