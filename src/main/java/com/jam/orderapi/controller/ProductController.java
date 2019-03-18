@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jam.orderapi.entity.Product;
-import com.jam.orderapi.entity.service.ProductServiceImpl;
+import com.jam.orderapi.entity.service.ProductService;
 
 /**
  * This API used to get the available products
@@ -21,9 +21,8 @@ import com.jam.orderapi.entity.service.ProductServiceImpl;
 @RequestMapping("/orderapi")
 public class ProductController {
 	
-	
 	@Autowired
-	ProductServiceImpl productServiceImpl;
+	ProductService productServiceImpl;
 	/**
 	 * REST endpoint that returns the products encoded in the database
 	 * The products returned are fixed values persisted when the app starts
@@ -36,7 +35,5 @@ public class ProductController {
 		return productServiceImpl.getAllProducts();
 	}
 
-	
-	
 
 }

@@ -1,14 +1,19 @@
 package com.jam.orderapi;
 
+import java.sql.SQLException;
+
+import org.h2.tools.Server;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 import com.jam.orderapi.entity.Customer;
 import com.jam.orderapi.entity.Product;
 import com.jam.orderapi.entity.Transaction;
+import com.jam.orderapi.entity.model.OrderResponse.Status;
 import com.jam.orderapi.entity.repository.CustomerRepository;
 import com.jam.orderapi.entity.repository.ProductRepository;
 import com.jam.orderapi.entity.repository.TransactionRepository;
@@ -59,8 +64,8 @@ public class OrderApiApplication implements CommandLineRunner{
 		
 		// Add 2 new transactions for the same customer, keep the object reference to used for adding the selected items
 		//(int transid, Customer customer, Double totalprice, int status)
-		Transaction trans = new Transaction(7, cust, 45.8, 0);
-		Transaction trans2 = new Transaction(8, cust, 45.8, 0);
+		Transaction trans = new Transaction(7, cust, 45.8, Status.ORDER_NOT_ACCEPTED);
+		Transaction trans2 = new Transaction(8, cust, 45.8, Status.ORDER_NOT_ACCEPTED);
 		transactionRepository.save(trans);
 		transactionRepository.save(trans2);
 		
@@ -71,5 +76,10 @@ public class OrderApiApplication implements CommandLineRunner{
 
 		
 	}
+	
+	 @Bean(initMethod = "start", destroyMethod = "stop")
+	    public Server h2Server() throws SQLException {
+	        return Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "7073");
+	    }
 
 }

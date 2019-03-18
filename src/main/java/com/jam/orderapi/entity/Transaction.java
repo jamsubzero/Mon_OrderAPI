@@ -11,6 +11,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.jam.orderapi.entity.model.OrderResponse.Status;
 
 @Entity
 public class Transaction{
@@ -19,7 +20,7 @@ public class Transaction{
 	@GeneratedValue
 	private int transid;
 	private Double totalprice;
-	private int status; //1 accepted, 0 not accepted
+	private Status status; //1 accepted, 0 not accepted
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "customer_custid", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -30,13 +31,13 @@ public class Transaction{
 	public Transaction() {
 	}
 	
-	public Transaction(Customer customer, Double totalprice, int status) {
+	public Transaction(Customer customer, Double totalprice, Status status) {
 		this.customer = customer;
 		this.totalprice = totalprice;
 		this.status = status;
 	}
 	
-	public Transaction(int transid, Customer customer, Double totalprice, int status) {
+	public Transaction(int transid, Customer customer, Double totalprice, Status status) {
 		this.transid = transid;
 		this.customer = customer;
 		this.totalprice = totalprice;
@@ -61,10 +62,10 @@ public class Transaction{
 	public void setTotalprice(Double totalprice) {
 		this.totalprice = totalprice;
 	}
-	public int getStatus() {
+	public Status getStatus() {
 		return status;
 	}
-	public void setStatus(int status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
 	@Override

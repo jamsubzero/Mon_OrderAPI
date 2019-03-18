@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jam.orderapi.entity.Customer;
-import com.jam.orderapi.entity.service.CustomerServiceImpl;
+import com.jam.orderapi.entity.service.CustomerService;
 
 /**
  * This API is to provide user access to customer details
@@ -21,10 +21,11 @@ import com.jam.orderapi.entity.service.CustomerServiceImpl;
 public class CustomerController {
 	
 	@Autowired
-	CustomerServiceImpl customerServiceImpl;
+	CustomerService customerServiceImpl;
 	
 	/**
-	 * * REST endpoint in case we need to check the customer details (i.e. name & funds)
+	 * EXTRA:
+	 * REST endpoint in case we need to check the customer details (i.e. name & funds)
 	 * 
 	 * @param id - the customer id in the path variable
 	 * @return customer object

@@ -1,4 +1,4 @@
-package com.jam.orderapi.entity.POJO;
+package com.jam.orderapi.entity.model;
 
 
 public class OrderRequest {
@@ -6,6 +6,10 @@ public class OrderRequest {
 	private int custId;
 	private Double price;
 	
+	public OrderRequest() {
+	
+	}
+
 	public OrderRequest(int custId, Double price) {
 		this.custId = custId;
 		this.price = price;
