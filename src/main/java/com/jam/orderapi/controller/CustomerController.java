@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jam.orderapi.entity.Customer;
-import com.jam.orderapi.entity.service.CustomerService;
+import com.jam.orderapi.service.CustomerService;
 
 /**
  * This API is to provide user access to customer details

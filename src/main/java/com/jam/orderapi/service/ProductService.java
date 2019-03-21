@@ -1,4 +1,4 @@
-package com.jam.orderapi.entity.service;
+package com.jam.orderapi.service;
 
 import java.util.List;
 

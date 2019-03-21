@@ -1,4 +1,4 @@
-package com.jam.orderapi.entity.model;
+package com.jam.orderapi.model;
 
 public class OrderResponse {
 

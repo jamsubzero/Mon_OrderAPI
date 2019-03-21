@@ -11,7 +11,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.jam.orderapi.entity.model.OrderResponse.Status;
+import com.jam.orderapi.model.OrderResponse.Status;
 
 @Entity
 public class Transaction{

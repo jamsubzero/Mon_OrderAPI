@@ -1,4 +1,4 @@
-package com.jam.orderapi.entity.repository;
+package com.jam.orderapi.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

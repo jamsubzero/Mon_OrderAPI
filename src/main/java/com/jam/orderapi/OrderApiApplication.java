@@ -13,10 +13,10 @@ import org.springframework.context.annotation.Bean;
 import com.jam.orderapi.entity.Customer;
 import com.jam.orderapi.entity.Product;
 import com.jam.orderapi.entity.Transaction;
-import com.jam.orderapi.entity.model.OrderResponse.Status;
-import com.jam.orderapi.entity.repository.CustomerRepository;
-import com.jam.orderapi.entity.repository.ProductRepository;
-import com.jam.orderapi.entity.repository.TransactionRepository;
+import com.jam.orderapi.model.OrderResponse.Status;
+import com.jam.orderapi.repository.CustomerRepository;
+import com.jam.orderapi.repository.ProductRepository;
+import com.jam.orderapi.repository.TransactionRepository;
 
 @SpringBootApplication
 public class OrderApiApplication implements CommandLineRunner{
@@ -69,14 +69,9 @@ public class OrderApiApplication implements CommandLineRunner{
 		transactionRepository.save(trans);
 		transactionRepository.save(trans2);
 		
-		//adding 2 items to cart, -> for the same transaction, with different products and qty
-		//(Transaction transaction, Product product, int quantity)
-//		cartItemsRepository.save(new CartItems(trans, prod, 5));
-//		cartItemsRepository.save(new CartItems(trans, prod2, 89));
-
-		
 	}
 	
+	//this to configure H2 DB to accept access from outside of this app
 	 @Bean(initMethod = "start", destroyMethod = "stop")
 	    public Server h2Server() throws SQLException {
 	        return Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "7073");
