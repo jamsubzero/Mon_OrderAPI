@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.jam.orderapi.entity.Product;
 import com.jam.orderapi.service.ProductService;
 
+import io.swagger.annotations.ApiOperation;
+
 /**
  * This API used to get the available products
  * 
@@ -30,6 +32,7 @@ public class ProductController {
 	 * 
 	 * @return list of products
 	 */
+	@ApiOperation(value = "Returns all products, API consumer can use this to let customer select products" )
 	@GetMapping("/getallproducts")
 	public List<Product> getProducts(){
 		return productServiceImpl.getAllProducts();

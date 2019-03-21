@@ -15,6 +15,8 @@ import com.jam.orderapi.entity.Transaction;
 import com.jam.orderapi.model.OrderRequest;
 import com.jam.orderapi.service.TransactionService;
 
+import io.swagger.annotations.ApiOperation;
+
 /**
  * this API provides access to transaction/Orders info made by the user
  * 
@@ -40,6 +42,7 @@ public class TransactionController {
  * @param orderRequest - an object that contains the Id of the user and the total price
  * @return - List of all previous transactions with its coresponding status 
  */
+	@ApiOperation(value = "Process the order then returns all previous transactions with the status" )
 	@PostMapping("/ordernow")
 	public List<Transaction> orderNow(@RequestBody OrderRequest orderRequest) {
 		return transactionServiceImpl.orderNow(orderRequest);
@@ -53,6 +56,7 @@ public class TransactionController {
 	 * @param transId
 	 * @return list of transactions made by the requested customer
 	 */
+	@ApiOperation(value = "Returns a Transaction based on the given ID" )
 	@GetMapping("/gettrans/{transid}")
 	public Optional<Transaction> getTransById(@PathVariable int transid) {
 		return transactionServiceImpl.findTransactionById(transid);

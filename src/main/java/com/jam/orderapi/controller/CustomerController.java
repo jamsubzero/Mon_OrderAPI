@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jam.orderapi.entity.Customer;
 import com.jam.orderapi.service.CustomerService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 /**
  * This API is to provide user access to customer details
@@ -30,6 +32,7 @@ public class CustomerController {
 	 * @param id - the customer id in the path variable
 	 * @return customer object
 	 */
+	@ApiOperation(value = "Returns a customer based on the given ID" )
 	@GetMapping("/getcustomer/{id}")
 	public Optional<Customer> getCustomer(@PathVariable int id){
 		return customerServiceImpl.getCustomerById(id);
